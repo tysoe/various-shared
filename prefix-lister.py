@@ -9,7 +9,7 @@ if __name__ == '__main__':
     python prefix-lister.py source-bucket-name source-bucket-prefix
 
 Example:
-    python prefix-lister.py 'els-demo-app-bucket' 'content/images'
+    python prefix-lister.py 'demo-app-bucket' 'content/images'
 """)
     
     bucket = sys.argv[1]
@@ -19,8 +19,6 @@ Example:
     marker = ''
     key_count = 0
     global_key_count = 0
-    file_count = 1
-    file = tempfile.NamedTemporaryFile(mode='w+t', encoding='UTF-8')
 
     while marker is not None:
         list_response = s3.list_objects(

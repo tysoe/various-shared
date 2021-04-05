@@ -17,8 +17,6 @@ Example:
 
     s3 = boto3.client('s3')
     marker = ''
-    key_count = 0
-    global_key_count = 0
 
     while marker is not None:
         list_response = s3.list_objects(
@@ -30,8 +28,6 @@ Example:
         if 'Contents' in list_response:
             for result in list_response['Contents']:
                 print(f"{result['Key']}")
-                key_count += 1
-                global_key_count += 1
             
             marker = list_response['Contents'][-1]['Key']
         else:
